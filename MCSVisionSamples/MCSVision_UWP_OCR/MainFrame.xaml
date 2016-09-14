@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="MCSVision_UWP_OCR.MainFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MCSVision"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!-- VisualState to be triggered when window
+                         width is >=720 effective pixels. -->
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="FirstGrid.ColumnSpan"
+                                Value="1" />
+                        <Setter Target="FirstGrid.Column"
+                                Value="0" />
+                        <Setter Target="FirstGrid.Row"
+                                Value="0" />
+                        <Setter Target="SecondGrid.Column"
+                                Value="1" />
+                        <Setter Target="SecondGrid.ColumnSpan"
+                                Value="1" />
+                        <Setter Target="SecondGrid.Row"
+                                Value="0" />
+                        <Setter Target="ThirdGrid.Column"
+                                Value="0" />
+                        <Setter Target="ThirdGrid.Row"
+                                Value="1" />
+                        <Setter Target="ThirdGrid.ColumnSpan"
+                                Value="1" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="FirstGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="#0078d7" >
+            <CaptureElement x:Name="CaptureElement"></CaptureElement>
+        </Grid>
+        <Grid x:Name="SecondGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Background="#0078d7">
+            <Button x:Name="SendButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send Picture" FontSize="40" Click="SendButton_OnClick"></Button>
+        </Grid>
+        <Grid x:Name="ThirdGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Background="White" Padding="0,0,0,0">
+            <Image x:Name="QuestionMark" Stretch="None" Source="Images/quest.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
+            <Image x:Name="RobotPicture" Stretch="None" Source="Images/images.jpg" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <ScrollViewer>
+                <TextBlock x:Name="PlainText" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="50" TextWrapping="Wrap" FontSize="14"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
