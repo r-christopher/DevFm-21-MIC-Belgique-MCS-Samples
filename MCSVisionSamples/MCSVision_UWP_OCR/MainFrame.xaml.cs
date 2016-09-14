@@ -44,20 +44,11 @@ namespace MCSVision_UWP_OCR
         public async void StartVideoPreview()
         {
             Debug.WriteLine("The camera is starting...");
-            await CameraExecute();
-        }
-
-        public async Task CameraExecute()
-        {
             await _wbService.InitializeCameraAsync();
             await _wbService.StartCameraPreviewAsync();
-            var b = await _wbService.StartFaceDetectionAsync(500);
 
-            //if (_wbService.IsInitialized && await _wbService.StartFaceDetectionAsync(300))
-            //{
-            //    _wbService.FaceDetectionEffect.FaceDetected += OnFaceDetected;
-            //}
         }
+
         private async void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
             using (var stream = new InMemoryRandomAccessStream())

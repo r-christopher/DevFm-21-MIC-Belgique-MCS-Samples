@@ -47,5 +47,28 @@ namespace MCSVision.Model
 
             return sb.ToString();
         }
+
+        public async Task<string> AnalyzePicture(Stream picture)
+        {
+            StringBuilder sb = new StringBuilder();
+            try
+            {
+                Debug.WriteLine("The picture is under processing...");
+
+                var result = await _vServiceClient.AnalyzeImageAsync(picture, new string[] { "Tags" });
+
+                result.Tags.Select(p => p.Name).ToList().ForEach(p =>
+                {
+                    sb.Append(p);
+                    sb.Append(" ");
+                });
+            }
+            catch (HttpRequestException)
+            {
+                Debug.WriteLine("HTTP REQUEST exception");
+            }
+
+            return sb.ToString();
+        }
     }
 }
