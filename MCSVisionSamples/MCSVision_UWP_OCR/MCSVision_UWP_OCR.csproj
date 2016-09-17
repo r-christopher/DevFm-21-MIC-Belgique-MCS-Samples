@@ -92,11 +92,15 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnazlyzeVideo.xaml.cs">
-      <DependentUpon>AnazlyzeVideo.xaml</DependentUpon>
+    <Compile Include="AnalyzeVideo.xaml.cs">
+      <DependentUpon>AnalyzeVideo.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="DescribeVideo.xaml.cs">
+      <DependentUpon>DescribeVideo.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainFrame.xaml.cs">
       <DependentUpon>MainFrame.xaml</DependentUpon>
@@ -130,7 +134,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AnazlyzeVideo.xaml">
+    <Page Include="AnalyzeVideo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DescribeVideo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

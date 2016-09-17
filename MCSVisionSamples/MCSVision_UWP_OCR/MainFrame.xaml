@@ -42,9 +42,9 @@
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition />
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -52,7 +52,13 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid x:Name="FirstGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="#0078d7" >
-            <CaptureElement x:Name="CaptureElement"></CaptureElement>
+            <CaptureElement x:Name="CaptureElement" RenderTransformOrigin=".5,.5" Stretch="UniformToFill">
+
+                <CaptureElement.RenderTransform>
+                    <RotateTransform x:Name="RotateVideo" Angle="0" CenterX="0.5" CenterY="0.5"/>
+                </CaptureElement.RenderTransform>
+
+            </CaptureElement>
         </Grid>
         <Grid x:Name="SecondGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Background="#0078d7">
             <Button x:Name="SendButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send Picture" FontSize="40" Click="SendButton_OnClick"></Button>

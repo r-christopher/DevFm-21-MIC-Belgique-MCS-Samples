@@ -30,7 +30,12 @@ namespace MCSVision_UWP_OCR
 
         private void MenuVideoAnalyse_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(AnazlyzeVideo));
+            MainFrame.Navigate(typeof(AnalyzeVideo));
+        }
+
+        private void MenuDescribeVideo_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(DescribeVideo));
         }
     }
 }

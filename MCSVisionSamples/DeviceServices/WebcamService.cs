@@ -49,8 +49,22 @@ namespace DeviceServices
 
                 MediaCapture = new MediaCapture();
                 await MediaCapture.InitializeAsync(settings);
-                await SetDefinitionAsync(1280, 720);
                 IsInitialized = true;
+
+                // Getting the platform family
+                var platformFamily = Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
+
+                // Setting the resolution according to the platform family
+                if (platformFamily == "Windows.Desktop")
+                {
+                    await SetDefinitionAsync(1280, 720);
+                }
+                else
+                {
+                    MediaCapture.SetPreviewMirroring(true);
+                    await SetDefinitionAsync(1920, 1080);
+                }
+                    
             }
         }
 
@@ -133,10 +147,7 @@ namespace DeviceServices
                 var definition = new FaceDetectionEffectDefinition
                 {
                     DetectionMode = FaceDetectionMode.HighQuality,
-                     
-                    SynchronousDetectionEnabled = false,
-                    
-                    
+                    SynchronousDetectionEnabled = false
                 };
                
 
@@ -183,21 +194,25 @@ namespace DeviceServices
                 await MediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync
                     (MediaStreamType.VideoPreview, resolution);
 
-                if (MediaCapture.VideoDeviceController.FocusControl.Supported)
-                {
-                    MediaCapture.VideoDeviceController.FocusControl.Configure(new FocusSettings
-                    {
-                        Mode = FocusMode.Manual,
-                        Value = 100,
-                        DisableDriverFallback = true
-                    });
-                    await MediaCapture.VideoDeviceController.FocusControl.FocusAsync();
-                }
-                else
-                {
-                    Debug.WriteLine("Focus is not supported on this device");
-                }
+            }
 
+        }
+        public async Task SetFocusAsync(uint? value)
+        {
+            // setting the focus at the maximum
+            if (MediaCapture.VideoDeviceController.FocusControl.Supported)
+            {
+                MediaCapture.VideoDeviceController.FocusControl.Configure(new FocusSettings
+                {
+                    Mode = FocusMode.Manual,
+                    Value = value,
+                    DisableDriverFallback = true
+                });
+                await MediaCapture.VideoDeviceController.FocusControl.FocusAsync();
+            }
+            else
+            {
+                Debug.WriteLine("Focus is not supported on this device");
             }
         }
     }

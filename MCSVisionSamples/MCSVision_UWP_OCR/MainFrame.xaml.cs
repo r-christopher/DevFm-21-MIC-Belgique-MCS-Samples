@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using Windows.Graphics.Display;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
@@ -46,7 +47,15 @@ namespace MCSVision_UWP_OCR
             Debug.WriteLine("The camera is starting...");
             await _wbService.InitializeCameraAsync();
             await _wbService.StartCameraPreviewAsync();
-
+            // Getting the platform family
+            var platformFamily = Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
+           
+            if (platformFamily == "Windows.Mobile")
+            {
+                await _wbService.SetFocusAsync(100);
+                RotateVideo.Angle = 90;
+            }
+                
         }
 
         private async void SendButton_OnClick(object sender, RoutedEventArgs e)
