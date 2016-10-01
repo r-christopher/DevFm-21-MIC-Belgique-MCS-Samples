@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using MCSVision_UWP_OCR;
+using MCSVision_UWP_OCR.Model;
 using Microsoft.ProjectOxford.Vision;
 
 namespace MCSVision.Model
@@ -20,14 +21,17 @@ namespace MCSVision.Model
             _httpClient = new HttpClient();
             _vServiceClient = new VisionServiceClient(AppConfig.SubscriptionKey);
         }
-        public async Task<string> OpticalCharacterRecognition(Stream picture)
+        public async Task<OcrText> OpticalCharacterRecognition(Stream picture)
         {
-            StringBuilder sb = new StringBuilder();
+            OcrText response = new OcrText();
+            StringBuilder position = new StringBuilder();
+            StringBuilder text = new StringBuilder();
             try
             {
                 Debug.WriteLine("The picture is under processing...");
 
                 var result = await _vServiceClient.RecognizeTextAsync(picture, "unk", false);
+
 
                 result.Regions.Select(p => p.Lines).ToList().ForEach(p =>
                 {
@@ -35,8 +39,22 @@ namespace MCSVision.Model
                     {
                         pp.Words.ToList().ForEach(ppp =>
                         {
-                            sb.Append(ppp.Text);
-                            sb.Append(" ");
+                            position.Append(ppp.Text);
+                            position.Append(" - ");
+                            position.Append($"Left : {ppp.Rectangle.Left}, Top : {ppp.Rectangle.Top}, Width : {ppp.Rectangle.Width}, Height : {ppp.Rectangle.Height}");
+                            position.AppendLine("");
+                        });
+                    });
+                });
+
+                result.Regions.Select(p => p.Lines).ToList().ForEach(p =>
+                {
+                    p.ToList().ForEach(pp =>
+                    {
+                        pp.Words.ToList().ForEach(ppp =>
+                        {
+                            text.Append(ppp.Text);
+                            text.Append(" ");
                         });
                     });
                 });
@@ -45,8 +63,9 @@ namespace MCSVision.Model
             {
                 Debug.WriteLine("HTTP REQUEST exception");
             }
-
-            return sb.ToString();
+            response.Position = position.ToString();
+            response.Text = text.ToString();
+            return response;
         }
 
         public async Task<string> AnalyzePicture(Stream picture)

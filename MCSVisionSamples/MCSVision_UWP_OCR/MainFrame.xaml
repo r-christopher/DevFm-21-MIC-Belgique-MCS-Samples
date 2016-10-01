@@ -24,6 +24,8 @@
                                 Value="0" />
                         <Setter Target="FirstGrid.Row"
                                 Value="0" />
+                        <Setter Target="FirstGrid.RowSpan"
+                                Value="2" />
                         <Setter Target="SecondGrid.Column"
                                 Value="1" />
                         <Setter Target="SecondGrid.ColumnSpan"
@@ -31,20 +33,22 @@
                         <Setter Target="SecondGrid.Row"
                                 Value="0" />
                         <Setter Target="ThirdGrid.Column"
-                                Value="0" />
+                                Value="1" />
                         <Setter Target="ThirdGrid.Row"
                                 Value="1" />
                         <Setter Target="ThirdGrid.ColumnSpan"
                                 Value="1" />
+                        <Setter Target="ThirdGrid.Visibility"
+                                Value="Visible" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -53,22 +57,20 @@
         </Grid.ColumnDefinitions>
         <Grid x:Name="FirstGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="#0078d7" >
             <CaptureElement x:Name="CaptureElement" RenderTransformOrigin=".5,.5" Stretch="UniformToFill">
-
                 <CaptureElement.RenderTransform>
                     <RotateTransform x:Name="RotateVideo" Angle="0" CenterX="0.5" CenterY="0.5"/>
                 </CaptureElement.RenderTransform>
-
             </CaptureElement>
+            <Button x:Name="SendButton" BorderBrush="Transparent" BorderThickness="0,0,0,0" Foreground="White" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Transparent" Content="&#59170;" FontSize="80" Click="SendButton_OnClick"></Button>
         </Grid>
-        <Grid x:Name="SecondGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Background="#0078d7">
-            <Button x:Name="SendButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send Picture" FontSize="40" Click="SendButton_OnClick"></Button>
+        <Grid x:Name="SecondGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Background="White"> 
+            <TextBlock x:Name="PlainText" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="50" TextWrapping="Wrap" FontSize="25"/>
+            
         </Grid>
-        <Grid x:Name="ThirdGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Background="White" Padding="0,0,0,0">
+        <Grid x:Name="ThirdGrid" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Collapsed" Grid.Row="2" Background="White" Padding="0,0,0,0">
+            <TextBlock x:Name="PositionText" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="50" TextWrapping="Wrap" FontSize="14"/>
             <Image x:Name="QuestionMark" Stretch="None" Source="Images/quest.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
-            <Image x:Name="RobotPicture" Stretch="None" Source="Images/images.jpg" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <ScrollViewer>
-                <TextBlock x:Name="PlainText" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="50" TextWrapping="Wrap" FontSize="14"/>
-            </ScrollViewer>
+            <Image x:Name="RobotPicture" Stretch="None" Source="Images/images.png" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Page>

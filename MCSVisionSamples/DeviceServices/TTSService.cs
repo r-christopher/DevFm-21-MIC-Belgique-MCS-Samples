@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Media.Playback;
 using Windows.Media.SpeechSynthesis;
 
-namespace MartineobotIOTMvvm.Models.VoiceInterface.TextToSpeech
+namespace DeviceServices
 {
     public static class TtsService
     {
@@ -14,7 +13,7 @@ namespace MartineobotIOTMvvm.Models.VoiceInterface.TextToSpeech
         private static bool _isInitialized; 
         
         /// <summary>
-        /// Allows the computer to speak a Text
+        /// Allows the computer to speak with a given a text
         /// </summary>
         public static async Task SayAsync(string textToSay)
         {

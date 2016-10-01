@@ -10,13 +10,8 @@ using Windows.UI.Xaml.Controls;
 using MCSVision.Model;
 using DeviceServices;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace MCSVision_UWP_OCR
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainFrame : Page
     {
         private WebcamService _wbService;
@@ -32,7 +27,6 @@ namespace MCSVision_UWP_OCR
 
             StartVideoPreview();
         
-            //DisplayInformation.AutoRotationPreferences = DisplayOrientations.Landscape;
             Unloaded += MainFrame_Unloaded;
         }
 
@@ -70,7 +64,8 @@ namespace MCSVision_UWP_OCR
                     QuestionMark.Visibility = Visibility.Visible;
                     var plainText = await _mcsVisionService.OpticalCharacterRecognition(stream.AsStreamForRead());
                     QuestionMark.Visibility = Visibility.Collapsed;
-                    PlainText.Text = plainText;
+                    PlainText.Text = plainText.Text;
+                    PositionText.Text = plainText.Position;
                 }
                 catch (Exception ex)
                 {

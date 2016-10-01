@@ -10,23 +10,23 @@
     <SplitView x:Name="MySplitView" DisplayMode="CompactInline"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="150" PaneBackground="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <SplitView.Pane>
-            <StackPanel Background="White">
+            <StackPanel Background="Black">
                 <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
-                    Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click" />
+                    Width="50" Height="50" Background="Transparent" Foreground="White" Click="HamburgerButton_Click" />
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="MenuHome" FontFamily="Segoe MDL2 Assets" Content="&#xE825;"
-                    Width="50" Height="50" Background="Transparent" Click="MenuHome_Click"/>
-                    <TextBlock Text="Use OCR" FontSize="18" VerticalAlignment="Center" />
+                    <Button x:Name="MenuHome" FontFamily="Segoe MDL2 Assets" Content="&#xE890;"
+                    Width="50" Height="50" Background="Transparent" Foreground="White" Click="MenuHome_Click"/>
+                    <TextBlock Text="Use OCR" FontSize="18" Foreground="White" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="MenuVideoAnalyse" FontFamily="Segoe MDL2 Assets" Content="&#xE10F;"
+                    <Button x:Name="MenuVideoAnalyse" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xEA37;"
                         Width="50" Height="50" Background="Transparent" Click="MenuVideoAnalyse_Click"/>
-                    <TextBlock Text="An. Vid." FontSize="18" VerticalAlignment="Center" />
+                    <TextBlock Text="An. Vid." Foreground="White" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="MenuDescribeVideo" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;"
+                    <Button x:Name="MenuDescribeVideo" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;"
                         Width="50" Height="50" Background="Transparent" Click="MenuDescribeVideo_Click" />
-                    <TextBlock Text="Desc. Vid." FontSize="18" VerticalAlignment="Center" />
+                    <TextBlock Text="Desc. Vid." Foreground="White" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
         </SplitView.Pane>

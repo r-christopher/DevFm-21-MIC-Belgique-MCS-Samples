@@ -108,7 +108,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ConstraintsDictionnary.cs" />
     <Compile Include="Model\MCSVisionService.cs" />
+    <Compile Include="Model\OcrText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -118,7 +120,7 @@
     <None Include="MCSVision_UWP_OCR_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\images.jpg" />
+    <Content Include="Images\images.png" />
     <Content Include="Images\quest.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
