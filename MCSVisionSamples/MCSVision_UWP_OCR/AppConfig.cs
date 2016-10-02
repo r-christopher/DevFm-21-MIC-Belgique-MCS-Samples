@@ -9,9 +9,9 @@ namespace MCSVision_UWP_OCR
     public static class AppConfig
     {
 #if DEBUG
-        public static string SubscriptionKey = "< Your subscription Key >";
+        public static string SubscriptionKey = "< Your Subscription Key >";
 #else
-        public static string SubscriptionKey = "< Your subscription Key >";
+        public static string SubscriptionKey = "< Your Subscription Key >";
 #endif
     }
 }

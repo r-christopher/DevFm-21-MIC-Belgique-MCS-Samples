@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using MCSVision_UWP_OCR;
 using MCSVision_UWP_OCR.Model;
 using Microsoft.ProjectOxford.Vision;
 
-namespace MCSVision.Model
+namespace MCSVision_UWP_OCR.ServiceHelpers
 {
     public class McsVisionService
     {
@@ -21,9 +19,10 @@ namespace MCSVision.Model
             _httpClient = new HttpClient();
             _vServiceClient = new VisionServiceClient(AppConfig.SubscriptionKey);
         }
-        public async Task<OcrText> OpticalCharacterRecognition(Stream picture)
+
+        public async Task<TextResult> OpticalCharacterRecognition(Stream picture)
         {
-            OcrText response = new OcrText();
+            TextResult response = new TextResult();
             StringBuilder position = new StringBuilder();
             StringBuilder text = new StringBuilder();
             try
@@ -31,7 +30,6 @@ namespace MCSVision.Model
                 Debug.WriteLine("The picture is under processing...");
 
                 var result = await _vServiceClient.RecognizeTextAsync(picture, "unk", false);
-
 
                 result.Regions.Select(p => p.Lines).ToList().ForEach(p =>
                 {
@@ -63,8 +61,8 @@ namespace MCSVision.Model
             {
                 Debug.WriteLine("HTTP REQUEST exception");
             }
-            response.Position = position.ToString();
-            response.Text = text.ToString();
+            response.TextTop = position.ToString();
+            response.TextBottom = text.ToString();
             return response;
         }
 
@@ -91,21 +89,30 @@ namespace MCSVision.Model
             return sb.ToString();
         }
 
-        public async Task<string> DescribePicture(Stream picture)
+        public async Task<TextResult> DescribePicture(Stream picture)
         {
-            StringBuilder sb = new StringBuilder();
+            TextResult response = new TextResult();
+            StringBuilder top = new StringBuilder();
+            StringBuilder bottom = new StringBuilder();
             try
             {
                 Debug.WriteLine("The picture is under processing...");
 
                 var result = await _vServiceClient.DescribeAsync(picture);
-                sb.Append("I see ");
+
+                result.Description.Tags.Select(p => p).ToList().ForEach(ppp =>
+                {
+                    top.Append(ppp);
+                    top.Append(" ");
+                });
 
                 result.Description.Captions.ToList().ForEach(p =>
                 {
-                    sb.Append(p.Text);
+                    bottom.Append($"I am {Math.Round(p.Confidence*100)}% sure that I see ");
 
-                    sb.Append(". ");
+                    bottom.Append(p.Text);
+
+                    bottom.Append(". ");
                 });
 
             }
@@ -114,7 +121,10 @@ namespace MCSVision.Model
                 Debug.WriteLine("HTTP REQUEST exception");
             }
 
-            return sb.ToString();
+            response.TextBottom = bottom.ToString();
+            response.TextTop = top.ToString();
+
+            return response;
         }
     }
 }

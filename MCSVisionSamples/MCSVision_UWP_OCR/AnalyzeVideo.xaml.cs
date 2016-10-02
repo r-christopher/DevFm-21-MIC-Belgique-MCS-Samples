@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using DeviceServices;
-using MCSVision.Model;
+using MCSVision_UWP_OCR.ServiceHelpers;
 
 namespace MCSVision_UWP_OCR
 {

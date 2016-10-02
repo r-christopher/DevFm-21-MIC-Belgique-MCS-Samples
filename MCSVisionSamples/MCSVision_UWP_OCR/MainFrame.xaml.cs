@@ -7,8 +7,8 @@ using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using MCSVision.Model;
 using DeviceServices;
+using MCSVision_UWP_OCR.ServiceHelpers;
 
 namespace MCSVision_UWP_OCR
 {
@@ -64,8 +64,8 @@ namespace MCSVision_UWP_OCR
                     QuestionMark.Visibility = Visibility.Visible;
                     var plainText = await _mcsVisionService.OpticalCharacterRecognition(stream.AsStreamForRead());
                     QuestionMark.Visibility = Visibility.Collapsed;
-                    PlainText.Text = plainText.Text;
-                    PositionText.Text = plainText.Position;
+                    PlainText.Text = plainText.TextBottom;
+                    PositionText.Text = plainText.TextTop;
                 }
                 catch (Exception ex)
                 {

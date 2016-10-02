@@ -18,7 +18,8 @@
                     <RotateTransform x:Name="RotateVideo" Angle="0" CenterX="0.5" CenterY="0.5"/>
                 </CaptureElement.RenderTransform>
             </CaptureElement>
-            <TextBlock Padding="25" x:Name="PlainText" Visibility="Visible" Text="" FontSize="30" FontWeight="ExtraBold"  Foreground="YellowGreen" VerticalAlignment="Bottom" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Padding="25" x:Name="TextTop" Visibility="Visible" Text="" FontSize="20" FontWeight="ExtraBold"  Foreground="YellowGreen" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Padding="25" x:Name="TextBottom" Visibility="Visible" Text="" FontSize="30" FontWeight="ExtraBold"  Foreground="YellowGreen" VerticalAlignment="Bottom" HorizontalAlignment="Center" TextWrapping="Wrap"/>
         </Grid>
     </Grid>
 </Page>

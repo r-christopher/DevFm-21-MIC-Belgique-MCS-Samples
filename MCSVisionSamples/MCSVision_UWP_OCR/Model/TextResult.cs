@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MCSVision_UWP_OCR.Model
 {
-    public class OcrText
+    public class TextResult
     {
-        public string Text { get; set; }
-        public string Position { get; set; }
+        public string TextBottom { get; set; }
+        public string TextTop { get; set; }
     }
 }

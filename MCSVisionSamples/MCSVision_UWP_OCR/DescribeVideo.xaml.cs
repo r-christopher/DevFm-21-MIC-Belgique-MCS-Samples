@@ -19,8 +19,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using DeviceServices;
-using MCSVision.Model;
 using MCSVision_UWP_OCR.Model;
+using MCSVision_UWP_OCR.ServiceHelpers;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -87,8 +87,9 @@ namespace MCSVision_UWP_OCR
                     await Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
                         async () =>
                         {
-                            PlainText.Text = plainText;
-                            await TtsService.SayAsync(plainText);
+                            TextTop.Text = plainText.TextTop;
+                            TextBottom.Text = plainText.TextBottom;
+                            await TtsService.SayAsync(plainText.TextBottom);
                         }
                     );
                 }
@@ -98,7 +99,7 @@ namespace MCSVision_UWP_OCR
                 }
             }
         }
-        private void ContinuousRecognitionSession_ResultGenerated(Windows.Media.SpeechRecognition.SpeechContinuousRecognitionSession sender, 
+        private async void ContinuousRecognitionSession_ResultGenerated(Windows.Media.SpeechRecognition.SpeechContinuousRecognitionSession sender,
             Windows.Media.SpeechRecognition.SpeechContinuousRecognitionResultGeneratedEventArgs args)
         {
             Debug.WriteLine($"Speech detected: {args.Result.Text}");
@@ -106,6 +107,14 @@ namespace MCSVision_UWP_OCR
             {
                 if (args.Result.Constraint.Tag == "constraint_describe")
                 {
+                    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                        () =>
+                        {
+                            TextTop.Text = "...";
+                            TextBottom.Text = "...";
+                        }
+                    );
+
                     StartAnalyzing();
                 }
             }
