@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCSVision_UWP_OCR", "MCSVis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceServices", "DeviceServices\DeviceServices.csproj", "{1C0F2CE2-A58D-4364-969D-77DDB316BB56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCSVision_UWP_Face", "MCSVision_UWP_Face\MCSVision_UWP_Face.csproj", "{016A15B3-5F79-458E-AB16-DD42B8C04927}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,26 @@ Global
 		{1C0F2CE2-A58D-4364-969D-77DDB316BB56}.Release|x64.Build.0 = Release|x64
 		{1C0F2CE2-A58D-4364-969D-77DDB316BB56}.Release|x86.ActiveCfg = Release|x86
 		{1C0F2CE2-A58D-4364-969D-77DDB316BB56}.Release|x86.Build.0 = Release|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|ARM.ActiveCfg = Debug|ARM
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|ARM.Build.0 = Debug|ARM
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|ARM.Deploy.0 = Debug|ARM
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|x64.ActiveCfg = Debug|x64
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|x64.Build.0 = Debug|x64
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|x64.Deploy.0 = Debug|x64
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|x86.ActiveCfg = Debug|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|x86.Build.0 = Debug|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Debug|x86.Deploy.0 = Debug|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|Any CPU.ActiveCfg = Release|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|ARM.ActiveCfg = Release|ARM
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|ARM.Build.0 = Release|ARM
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|ARM.Deploy.0 = Release|ARM
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|x64.ActiveCfg = Release|x64
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|x64.Build.0 = Release|x64
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|x64.Deploy.0 = Release|x64
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|x86.ActiveCfg = Release|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|x86.Build.0 = Release|x86
+		{016A15B3-5F79-458E-AB16-DD42B8C04927}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

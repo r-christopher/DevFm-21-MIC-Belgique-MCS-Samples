@@ -20,6 +20,12 @@ namespace MCSVision_UWP_OCR.ServiceHelpers
             _vServiceClient = new VisionServiceClient(AppConfig.SubscriptionKey);
         }
 
+        public McsVisionService(string key)
+        {
+            _httpClient = new HttpClient();
+            _vServiceClient = new VisionServiceClient(key);
+        }
+
         public async Task<TextResult> OpticalCharacterRecognition(Stream picture)
         {
             TextResult response = new TextResult();
